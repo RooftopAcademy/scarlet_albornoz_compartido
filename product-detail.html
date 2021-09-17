@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" theme='light'>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+        integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="img/mushi.ico" type="image/x-icon">
+    <title>Mushi</title>
+</head>
+
+<body class="d-flex flex-col">
+    <header class="header j-space-between">
+        <div class="search-bar d-flex wrap">
+            <input type="search" name="search-bar" placeholder="Search..." class="search-input" id="search-input">
+            <button class="btn search-btn"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="dark-mode"><button class="btn"><i class="fas fa-adjust"></i></button></div>
+    </header>
+
+    <main class="main d-flex">
+
+        <aside class="navbar d-flex w-100">
+            <nav class="navigation w-100 d-flex col">
+                <div class="nav-header d-flex w-100 j-space-between">
+                    <div class="dark-mode"><button class="btn"><i class="fas fa-adjust"></i></button></div>
+                    <a href="index.html" class="home-logo nav-link">
+                        <img src="img/mushi.ico" alt="Mushi logo" class="home-img">
+                    </a>
+                    <button id="hamburger" class="btn hamburger">&#9776;</button>
+                </div>
+                <div id="nav-menu" class="nav-menu a-items-end text-center w-100 d-none grow col">
+                    <a href="index.html" class="nav-link w-100">Home</a>
+                    <a href="products.html" class="nav-link w-100">Our products</a>
+                </div>
+            </nav>
+        </aside>
+
+        <div class="content d-flex j-center a-items-center">
+            <section class="product-detail h-100 w-100 d-flex wrap">
+                <div class="col-card">
+                    <div class="card">
+                        <img src="img/10-pcs-aluminium-rings.jpg" alt="product image" class="card-img">
+                        <div class="card-body">
+                            <h5 class="card-title">10 pcs aluminium binding rings</h5>
+                            <p class="card-text">
+                                Check out this super resistent aluminium binding rings for your brand new agenda!
+                            </p>
+                            <p class="card-text">
+                                This awesome kit comes with 10 binding rings for A5 sheets and you can choose any of our
+                                available
+                                colors.
+                            </p>
+                            <a href="products.html" class="btn">Go back to product list</a>
+                        </div>
+                        </img>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <footer class="footer d-flex flex-col a-items-center j-center">
+        <p>&#9825; Scarlet Albornoz &#169; - Rooftopper &#9825; 2021</p>
+    </footer>
+
+    <!-- scripts -->
+    <script src="script/main.js"></script>
+    <script src="script/products.js"></script>
+</body>
+
+</html>

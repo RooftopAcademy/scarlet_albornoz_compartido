@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Lemon&family=Montserrat&family=Sail&display=swap");
+
+$white: #f9f6f1;
+$light: #fff5e3;
+$dark-grey: #343a40;
+$dark: #212529;
+$tertiary: #f7e5c6;
+$secondary: #ffbb99;
+$primary: #ff928b;
+$background: #f9f6f1d9;
+$background-dark: #22262ad9;
+
+:root {
+  --default-font: "Montserrat", sans-serif;
+  --main-title: "Sail", cursive;
+  --title: "Lemon", cursive;
+  --primary: #{$primary};
+  --secondary: #{$secondary};
+  --tertiary: #{$tertiary};
+  --nav-bg: #{$primary};
+  --side-bg: #{$secondary};
+  --hover: #{$tertiary};
+  --text: #{$dark};
+  --text-hover: #{$dark-grey};
+  --background: #{$background};
+  --dark: #{$dark};
+  --light: #{$light};
+  --dark-grey: #{$dark-grey};
+}
+
+html[theme="dark"] {
+  --nav-bg: #{$dark};
+  --side-bg: #{$dark-grey};
+  --text: #{$light};
+  --background: #{$background-dark};
+}

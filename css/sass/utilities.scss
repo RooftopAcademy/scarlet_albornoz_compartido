@@ -1,0 +1,60 @@
+.w-100 {
+  width: 100%;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.d-none {
+  display: none;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.grow {
+  flex-grow: 1;
+}
+
+.j-space-between {
+  justify-content: space-between;
+}
+
+.j-center {
+  justify-content: center;
+}
+
+.a-items-center {
+  align-items: center;
+}
+
+.a-items-end {
+  align-items: flex-end;
+}
+
+.a-content-center {
+  align-content: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.btn {
+  text-align: center;
+  text-decoration: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" theme='light'>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+        integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="img/mushi.ico" type="image/x-icon">
+    <title>Mushi</title>
+</head>
+
+<body class="d-flex flex-col">
+    <header class="header j-space-between">
+        <div class="search-bar d-flex wrap">
+            <input type="search" name="search-bar" placeholder="Search..." class="search-input" id="search-input">
+            <button class="btn search-btn"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="dark-mode"><button class="btn"><i class="fas fa-adjust"></i></button></div>
+    </header>
+
+    <main class="main d-flex">
+
+        <aside class="navbar d-flex w-100">
+            <nav class="navigation w-100 d-flex col">
+                <div class="nav-header d-flex w-100 j-space-between">
+                    <div class="dark-mode"><button class="btn"><i class="fas fa-adjust"></i></button></div>
+                    <a href="index.html" class="home-logo nav-link">
+                        <img src="img/mushi.ico" alt="Mushi logo" class="home-img">
+                    </a>
+                    <button id="hamburger" class="btn hamburger">&#9776;</button>
+                </div>
+                <div id="nav-menu" class="nav-menu a-items-end text-center w-100 d-none grow col">
+                    <a href="index.html" class="nav-link w-100">Home</a>
+                    <a href="products.html" class="nav-link w-100">Our products</a>
+                </div>
+            </nav>
+        </aside>
+
+        <div class="content d-flex j-center a-items-center">
+            <section class="landing">
+                <img src="img/mushi.ico" alt="Mushroom logo">
+                <hgroup id="brand">
+                    <h1 class="brand-title">Welcome to Mushi Notebooks!</h1>
+                    <h2 class="brand-subtitle">Where you can find everything for your DIY Agenda</h2>
+                </hgroup>
+                <a class="btn" href="products.html">View our product list!</a>
+            </section>
+        </div>
+
+    </main>
+
+    <footer class="footer d-flex flex-col a-items-center j-center">
+        <p>&#9825; Scarlet Albornoz &#169; - Rooftopper &#9825; 2021</p>
+    </footer>
+
+    <!-- scripts -->
+    <script src="script/main.js"></script>
+</body>
+
+</html>

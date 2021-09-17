@@ -1,0 +1,18 @@
+.landing {
+  align-self: center;
+  background-color: var(--background);
+  padding: 2rem;
+  text-align: center;
+
+  .brand-title {
+    margin: 1rem;
+    font-family: var(--main-title);
+    font-size: 3rem;
+    color: var(--primary);
+  }
+
+  .brand-subtitle {
+    margin: 1rem;
+    color: var(--secondary);
+  }
+}
