@@ -243,3 +243,5 @@ Por ende, es más recomendable usar **let**, ya que evita la sobreescritura de v
 - ¿Qué similitudes y diferencias hay entre closures y callbacks?
 
   Ambas son funciones que se pueden utilizar dentro de otra función, la diferencia consiste en que, el callback se pasa como parámetro a otra función y el closure se declara dentro de otra función y su scope se limita a ella.
+
+.
