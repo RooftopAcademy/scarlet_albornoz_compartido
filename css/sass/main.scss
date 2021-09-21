@@ -124,3 +124,13 @@ main {
 .comment-card {
   margin-bottom: 0.25rem;
 }
+
+particle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-size: contain;
+}

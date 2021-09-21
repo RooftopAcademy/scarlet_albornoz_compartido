@@ -11,15 +11,4 @@ class ProductFactory {
         return product
     }
 
-    static async createCommentsHTML(cmnts) {
-
-        let productCommentsHTML
-        let comnts = await cmnts
-
-        comnts.forEach(cmnt => {
-            productCommentsHTML += new commentCard(cmnt)
-        })
-
-        return productCommentsHTML
-    }
 }
