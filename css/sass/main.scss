@@ -26,6 +26,7 @@ main {
 .btn {
   color: var(--light);
   background-color: var(--primary);
+  font-family: inherit;
 }
 
 .home-logo {
@@ -47,11 +48,10 @@ main {
 }
 
 .col-card {
-  flex: 0 0 100%;
+  flex: 0 0 1;
   padding: 0.25rem;
 
   .card {
-    // position: relative;
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -85,6 +85,25 @@ main {
         display: block;
       }
 
+      .card-price {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+        margin-top: 0.5rem;
+      }
+
+      .card-comment-title {
+        text-transform: uppercase;
+        font-family: var(--text);
+      }
+
+      .card-subtitle {
+        margin-bottom: 0.5rem;
+        margin-top: 0.5rem;
+        font-weight: 500;
+        line-height: 1.2;
+        color: var(--dark-grey);
+      }
+
       .card-text {
         line-height: 1.75;
         margin-bottom: 0.5rem;
@@ -95,8 +114,13 @@ main {
         display: block;
         margin-left: auto;
         margin-right: auto;
-        bottom: 0;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
       }
     }
   }
+}
+
+.comment-card {
+  margin-bottom: 0.25rem;
 }

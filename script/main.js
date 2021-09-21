@@ -20,8 +20,12 @@ function toggleTheme() {
     actualTheme == 'light' ? targetTheme = 'dark' : targetTheme = 'light';
 
     document.documentElement.setAttribute('theme', targetTheme);
+
+    sessionStorage.setItem('targetTheme', targetTheme)
 }
 
 toggleThemeBtn.forEach(btn => {
     btn.addEventListener('click', toggleTheme)
 });
+
+document.documentElement.setAttribute('theme', (sessionStorage.targetTheme || 'light'));

@@ -17,7 +17,7 @@
   --dark-grey: #343a40;
 }
 
-html[theme="dark"] {
+html[theme=dark] {
   --nav-bg: #212529;
   --side-bg: #343a40;
   --text: #fff5e3;
@@ -192,6 +192,7 @@ main {
 .btn {
   color: var(--light);
   background-color: var(--primary);
+  font-family: inherit;
 }
 
 .home-logo {
@@ -199,7 +200,7 @@ main {
   text-decoration: none;
   background-color: transparent;
   border: 1px solid transparent;
-  padding: 0;
+  padding: 0 0.25rem;
   border-radius: 0.25rem;
 }
 .home-logo .home-img {
@@ -214,7 +215,7 @@ main {
 }
 
 .col-card {
-  flex: 0 0 100%;
+  flex: 0 0 1;
   padding: 0.25rem;
 }
 .col-card .card {
@@ -249,6 +250,22 @@ main {
   color: var(--primary);
   display: block;
 }
+.col-card .card .card-body .card-price {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+.col-card .card .card-body .card-comment-title {
+  text-transform: uppercase;
+  font-family: var(--text);
+}
+.col-card .card .card-body .card-subtitle {
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--dark-grey);
+}
 .col-card .card .card-body .card-text {
   line-height: 1.75;
   margin-bottom: 0.5rem;
@@ -258,7 +275,12 @@ main {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  bottom: 0;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.comment-card {
+  margin-bottom: 0.25rem;
 }
 
 /* ----- MEDIA QUERIES ----- */
@@ -292,7 +314,7 @@ main {
 }
 @media (min-width: 1280px) {
   .header,
-  .footer {
+.footer {
     padding: 0.25rem 1rem;
   }
 
@@ -355,9 +377,16 @@ main {
   }
   .main .content .product-detail {
     max-width: 1000px;
+    height: calc(100vh - 6rem);
   }
   .main .content .product-detail .col-card .card {
     flex-direction: row;
+  }
+  .main .content .product-detail .col-card .card .card-body {
+    height: unset;
+  }
+  .main .content .product-detail .col-card .card .card-body .card-text {
+    margin: 1rem;
   }
 }
 .landing {
@@ -386,4 +415,4 @@ main {
 
 .product-detail {
   background-color: var(--background);
-} /*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */
