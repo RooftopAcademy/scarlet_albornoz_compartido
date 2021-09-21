@@ -8,11 +8,7 @@ class Catalog {
             return p.id == id
         })
 
-        // product.getComments()
-
-        // if (relations.includes('comments')) {
         await product.getComments()
-        // }
 
         return product
     }

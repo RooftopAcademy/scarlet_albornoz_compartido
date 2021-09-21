@@ -12,5 +12,3 @@ function productCard(product) {
     </div>
     `
 }
-
-//product-detail.html

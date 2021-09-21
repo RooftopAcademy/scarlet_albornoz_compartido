@@ -1,12 +1,8 @@
 class Store {
     constructor() {
         this.catalog = new Catalog
-        this.cart = new Cart
     }
 
-    getCart() {
-        return this.cart
-    }
 
     getCatalog() {
         return this.catalog
@@ -25,9 +21,5 @@ class Store {
 
             this.catalog.add(product)
         })
-    }
-
-    getUser() {
-        return this.user
     }
 }
