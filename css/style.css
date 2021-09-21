@@ -17,7 +17,7 @@
   --dark-grey: #343a40;
 }
 
-html[theme="dark"] {
+html[theme=dark] {
   --nav-bg: #212529;
   --side-bg: #343a40;
   --text: #fff5e3;
@@ -192,6 +192,7 @@ main {
 .btn {
   color: var(--light);
   background-color: var(--primary);
+  font-family: inherit;
 }
 
 .home-logo {
@@ -199,7 +200,7 @@ main {
   text-decoration: none;
   background-color: transparent;
   border: 1px solid transparent;
-  padding: 0;
+  padding: 0 0.25rem;
   border-radius: 0.25rem;
 }
 .home-logo .home-img {
@@ -258,7 +259,7 @@ main {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  bottom: 0;
+  margin-bottom: 1rem;
 }
 
 /* ----- MEDIA QUERIES ----- */
@@ -292,7 +293,7 @@ main {
 }
 @media (min-width: 1280px) {
   .header,
-  .footer {
+.footer {
     padding: 0.25rem 1rem;
   }
 
@@ -386,4 +387,4 @@ main {
 
 .product-detail {
   background-color: var(--background);
-} /*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */
