@@ -100,10 +100,18 @@ $xl: 1280px;
       overflow-y: auto;
       .product-detail {
         max-width: 1000px;
+        height: calc(100vh - 6rem);
 
         .col-card {
           .card {
             flex-direction: row;
+
+            .card-body {
+              height: unset;
+              .card-text {
+                margin: 1rem;
+              }
+            }
           }
         }
       }
