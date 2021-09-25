@@ -1,4 +1,4 @@
-type Comment = {
+export type Comment = {
     postId: number
     id: number
     name: string
@@ -6,16 +6,7 @@ type Comment = {
     body: string
 }
 
-type ProductType = {
-    id: number
-    name: string
-    price: number
-    description: string
-    img: string
-    comments: Comment[]
-}
-
-export default class Product {
+export class Product {
     id = 0
     name = ''
     price = 0
@@ -23,7 +14,7 @@ export default class Product {
     img = ''
     comments: Comment[] = []
 
-    async getComments(): Promise<ProductType> {
+    async getComments(): Promise<Product> {
         let res: Response = await fetch('https://jsonplaceholder.typicode.com/comments')
         let json: Comment[] = await res.json()
         this.comments = json.filter((item: Comment) => item.postId == this.id)
