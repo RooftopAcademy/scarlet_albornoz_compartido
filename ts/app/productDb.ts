@@ -1,4 +1,4 @@
-type ProductType = {
+export type ProductType = {
     id: number
     img: string
     name: string
@@ -6,7 +6,7 @@ type ProductType = {
     price: number
 }
 
-let productDb: ProductType[] = [
+export let productDb: ProductType[] = [
     {
         id: 1,
         img: '10-pcs-aluminium-rings.jpg',
