@@ -1,4 +1,4 @@
-import Product from './Product'
+import Product from './Product.js'
 import ProductListInterface from "./ProductListInterface.js";
 
 export default class Catalog implements ProductListInterface {

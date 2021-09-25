@@ -21,5 +21,3 @@ export default class Product {
         return this
     }
 }
-
-//: Promise<Object>

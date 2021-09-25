@@ -1,7 +1,7 @@
-import Product from "./Product";
-import Catalog from "./Catalog";
+import Product from "./Product.js";
+import Catalog from "./Catalog.js";
 
-class Cart extends Catalog {
+export default class Cart extends Catalog {
     remove(p: Product): Product {
         this.products.splice(this.products.findIndex((item: Product) => {
             item.id == p.id
