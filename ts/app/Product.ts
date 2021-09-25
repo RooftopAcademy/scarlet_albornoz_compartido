@@ -1,4 +1,4 @@
-export type Comment = {
+type Comment = {
     postId: number
     id: number
     name: string
@@ -6,7 +6,7 @@ export type Comment = {
     body: string
 }
 
-export class Product {
+export default class Product {
     id = 0
     name = ''
     price = 0

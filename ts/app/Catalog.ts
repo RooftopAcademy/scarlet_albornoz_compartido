@@ -1,7 +1,7 @@
-import { Product } from './Product'
+import Product from './Product'
 import ProductListInterface from "./ProductListInterface.js";
 
-class Catalog implements ProductListInterface {
+export default class Catalog implements ProductListInterface {
     products: Product[] = []
 
     async findById(id: number): Promise<Product> {
