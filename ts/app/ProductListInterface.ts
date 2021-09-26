@@ -1,5 +1,5 @@
-import Product from './Product.js'
+import Product from "./Product.js";
 
 export default interface ProductListInterface {
-    products: Product[]
+  products: Product[];
 }
