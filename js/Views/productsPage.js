@@ -7,7 +7,7 @@ export default function productsPage() {
         productList += productCard(product);
     });
     return /* html */ `
-    <section class="section w-100 h-100 d-flex wrap">
+    <section class="section products w-100 h-100 d-flex wrap">
         ${productList}
     </section>
     `;

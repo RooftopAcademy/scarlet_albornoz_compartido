@@ -1,9 +1,11 @@
+import Product from "./app/Product.js";
 import Store from "./app/Store.js";
 import homePage from "./Views/homePage.js";
 import productsPage from "./Views/productsPage.js";
 import productDetailPage from "./Views/productDetailPage.js";
 import errorPage from "./Views/errorPage.js";
-import Product from "./app/Product.js";
+import cartPage from "./Views/cartPage.js";
+import orderConfirmation from "./Views/orderConfirmation.js";
 
 export let store: Store = new Store();
 export let currentProduct: Product;
@@ -11,6 +13,19 @@ export let currentProduct: Product;
 const content: HTMLElement = document.getElementById("content") as HTMLElement;
 
 store.getProducts();
+
+interface routesInt {
+  [index: string]: any;
+}
+
+const routes: routesInt = {
+  "/": renderHomePage,
+  "/products": renderProductsPage,
+  "/cart": rendercartPage,
+  "/productDetail": renderProductDetailPage,
+  // '/about': aboutPage
+  "/404": renderErrorPage,
+};
 
 function findNavLinks(): void {
   let navLinks: Array<Element> = Array.from(
@@ -33,22 +48,22 @@ function findNavLinks(): void {
 }
 
 async function getCurrentProduct(productId: number): Promise<void> {
-  currentProduct = await store.catalog.findById(productId);
+  currentProduct = await store.catalog.findComments(productId);
   content.innerHTML = productDetailPage(currentProduct);
   findNavLinks();
 }
 
-function renderHomePage() {
+function renderHomePage(): void {
   content.innerHTML = homePage();
   findNavLinks();
 }
 
-function renderErrorPage() {
+function renderErrorPage(): void {
   content.innerHTML = errorPage();
   findNavLinks();
 }
 
-function renderProductsPage() {
+function renderProductsPage(): void {
   content.innerHTML = productsPage();
   findNavLinks();
 
@@ -60,28 +75,93 @@ function renderProductsPage() {
     document.getElementsByClassName("js-add-to-cart")
   ) as HTMLButtonElement[];
 
-  const detailsAndCartBtns: HTMLButtonElement[] =
-    detailsBtn.concat(addToCartBtn);
-
-  detailsAndCartBtns.forEach((btn: HTMLButtonElement) => {
+  detailsBtn.forEach((btn: HTMLButtonElement) => {
     btn.addEventListener("click", (e: Event) => {
       e.preventDefault();
       let productId: number = parseInt(btn.dataset.productId as string);
       getCurrentProduct(productId);
     });
   });
+
+  addToCartBtn.forEach((btn: HTMLButtonElement) => {
+    btn.addEventListener("click", (e: Event) => {
+      e.preventDefault();
+      let productId: number = parseInt(btn.dataset.productId as string);
+      store.cart.addToCart(productId);
+    });
+  });
 }
 
-// renderHomePage();
-
-interface routesInt {
-  [index: string]: any;
+function renderProductDetailPage(): void {
+  content.innerHTML = productDetailPage(currentProduct);
+  findNavLinks();
 }
 
-const routes: routesInt = {
-  "/": renderHomePage,
-  "/products": renderProductsPage,
-  // '/cart': cartPage,
-  // '/about': aboutPage
-  "/404": renderErrorPage,
-};
+function addOneProduct(): void {
+  let addOneBtn: HTMLButtonElement[] = Array.from(
+    document.getElementsByClassName("js-add-1")
+  ) as HTMLButtonElement[];
+
+  addOneBtn.forEach((btn) => {
+    btn.addEventListener("click", (e: Event) => {
+      e.preventDefault();
+      let productId: number = parseInt(btn.dataset.productId as string);
+      store.cart.addToCart(productId);
+      rendercartPage();
+    });
+  });
+}
+
+function removeOneProduct(): void {
+  let removeOneBtn: HTMLButtonElement[] = Array.from(
+    document.getElementsByClassName("js-remove-1")
+  ) as HTMLButtonElement[];
+
+  removeOneBtn.forEach((btn) => {
+    btn.addEventListener("click", (e: Event) => {
+      e.preventDefault();
+      let productId: number = parseInt(btn.dataset.productId as string);
+      store.cart.remove(productId);
+      rendercartPage();
+    });
+  });
+}
+
+function removeFromCart(): void {
+  let removeProductBtn: HTMLButtonElement[] = Array.from(
+    document.getElementsByClassName("js-remove-from-cart")
+  ) as HTMLButtonElement[];
+
+  removeProductBtn.forEach((btn) => {
+    btn.addEventListener("click", (e: Event) => {
+      e.preventDefault();
+      let productId: number = parseInt(btn.dataset.productId as string);
+      store.cart.removeFromCart(productId);
+      rendercartPage();
+    });
+  });
+}
+
+function confirmOrder(): void {
+  let confirmBtn: HTMLButtonElement = document.getElementById(
+    "confirmOrder"
+  ) as HTMLButtonElement;
+
+  let url = orderConfirmation();
+
+  confirmBtn.addEventListener("click", (e: Event) => {
+    e.preventDefault();
+    window.open(url, "_blank")?.focus();
+  });
+}
+
+function rendercartPage(): void {
+  content.innerHTML = cartPage();
+  findNavLinks();
+  addOneProduct();
+  removeOneProduct();
+  removeFromCart();
+  confirmOrder();
+}
+
+renderHomePage();

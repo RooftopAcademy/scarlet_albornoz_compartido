@@ -28,27 +28,21 @@
             <nav class="navigation w-100 d-flex col">
                 <div class="nav-header d-flex w-100 j-space-between">
                     <div class="dark-mode"><button class="btn"><i class="fas fa-adjust"></i></button></div>
-                    <a href="index.html" class="home-logo nav-link">
-                        <img src="img/mushi.ico" alt="Mushi logo" class="home-img">
+                    <a href="/" class="home-logo nav-link">
                     </a>
                     <button id="hamburger" class="btn hamburger">&#9776;</button>
                 </div>
                 <div id="nav-menu" class="nav-menu a-items-end text-center w-100 d-none grow col">
-                    <a href="index.html" class="nav-link w-100">Home</a>
-                    <a href="products.html" class="nav-link w-100">Our products</a>
+                    <a href="/" class="nav-link w-100">Home</a>
+                    <a href="/products" class="nav-link w-100">Our Products</a>
+                    <a href="/cart" class="nav-link w-100">Go to Cart</a>
+                    <!-- <a href="/about" class="nav-link w-100">About Us</a> -->
                 </div>
             </nav>
         </aside>
 
-        <div class="content d-flex j-center a-items-center">
-            <section class="landing">
-                <img src="img/mushi.ico" alt="Mushroom logo">
-                <hgroup id="brand">
-                    <h1 class="brand-title">Welcome to Mushi Notebooks!</h1>
-                    <h2 class="brand-subtitle">Where you can find everything for your DIY Agenda</h2>
-                </hgroup>
-                <a class="btn" href="products.html">View our product list!</a>
-            </section>
+        <div id="content" class="content d-flex j-center a-items-center">
+
         </div>
 
     </main>
@@ -58,7 +52,7 @@
     </footer>
 
     <!-- scripts -->
-    <script src="script/main.js"></script>
+    <script type="module" src="js/app.js"></script>
 </body>
 
 </html>

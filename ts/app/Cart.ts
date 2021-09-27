@@ -1,44 +1,48 @@
 import Product from "./Product.js";
 import Catalog from "./Catalog.js";
+import { store } from "../app.js";
 
 export default class Cart extends Catalog {
-  findProduct(pr: Product): number {
-    let product: number = this.products.findIndex(
-      (p: Product) => p.id == pr.id
-    );
+  findProduct(pId: number): number {
+    let product: number = this.products.findIndex((p: Product) => p.id == pId);
 
     return product;
   }
 
-  add(p: Product): Product {
-    let index = this.findProduct(p);
+  addToCart(pId: number): Product {
+    let index = this.findProduct(pId);
+    let product: Product;
 
-    if (index >= 0) {
-      this.products[index].qty++;
+    if (index < 0) {
+      product = store.catalog.findById(pId);
+      product.qty += 1;
+      this.products.push(product);
     } else {
-      p.qty++;
-      this.products.push(p);
+      product = this.products[index];
+      product.qty += 1;
     }
 
-    return p;
+    return product;
   }
 
-  remove(p: Product): Product {
-    let index = this.findProduct(p);
+  remove(pId: number): Product {
+    let index = this.findProduct(pId);
+    let product = this.products[index];
 
     if (this.products[index].qty > 1) {
-      this.products[index].qty--;
+      product.qty -= 1;
     } else {
-      this.removeFromCart(p);
+      this.removeFromCart(index);
     }
-    return p;
+    return product;
   }
 
-  removeFromCart(p: Product): Product {
-    let index = this.findProduct(p);
+  removeFromCart(pId: number): Product {
+    let index = this.findProduct(pId);
+    let product = this.products[index];
 
     this.products.splice(index, 1);
-    return p;
+    return product;
   }
 
   clearCart(): void {

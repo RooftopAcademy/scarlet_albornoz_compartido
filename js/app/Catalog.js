@@ -11,12 +11,19 @@ export default class Catalog {
     constructor() {
         this.products = [];
     }
-    findById(id) {
+    findComments(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            let product = this.products.find((p) => p.id == id);
+            // let product: Product = this.products.find(
+            //   (p: Product) => p.id == id
+            // ) as Product;
+            let product = this.findById(id);
             yield product.getComments();
             return product;
         });
+    }
+    findById(id) {
+        let product = this.products.find((p) => p.id == id);
+        return product;
     }
     add(p) {
         this.products.push(p);
