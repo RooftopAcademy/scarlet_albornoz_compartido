@@ -6,7 +6,7 @@ export default function productDetailPage(product) {
         commentsHTML += commentCard(comment);
     });
     return /* html */ `
-    <section class="section w-100 h-100 d-flex flex-col">
+    <section class="section product-detail w-100 h-100 d-flex flex-col">
         <div class="col-card d-flex flex-col w-100 a-items-center">
             <div class="card">
                 <img src="img/${product.img}" alt="product image" class="card-img">
@@ -20,7 +20,7 @@ export default function productDetailPage(product) {
                 </div>
             </div>
         </div>
-        <div class="product-comments col-card d-flex flex-col w-100 a-items-center h-100">
+        <div class="product-comments col-card d-flex flex-col w-100 a-items-center">
             ${commentsHTML}
         </div>
     </section>

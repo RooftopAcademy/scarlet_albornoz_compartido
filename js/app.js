@@ -17,7 +17,24 @@ import orderConfirmation from "./Views/orderConfirmation.js";
 export let store = new Store();
 export let currentProduct;
 const hamburger = document.getElementById("hamburger");
+hamburger.addEventListener("click", () => {
+    let menu = document.getElementById("nav-menu");
+    let classes = menu.classList;
+    let hide = "d-none";
+    let show = "show-menu";
+    classes.contains(hide)
+        ? classes.replace(hide, show)
+        : classes.replace(show, hide);
+});
 const toggleThemeBtn = Array.from(document.getElementsByClassName("dark-mode"));
+toggleThemeBtn.forEach((btn) => {
+    btn.addEventListener("click", () => {
+        let actualTheme = document.documentElement.getAttribute("theme");
+        let targetTheme = "";
+        actualTheme == "light" ? (targetTheme = "dark") : (targetTheme = "light");
+        document.documentElement.setAttribute("theme", targetTheme);
+    });
+});
 const content = document.getElementById("content");
 store.getProducts();
 const routes = {
@@ -44,23 +61,6 @@ function findNavLinks() {
         });
     });
 }
-hamburger.addEventListener("click", () => {
-    let menu = document.getElementById("nav-menu");
-    let classes = menu.classList;
-    let hide = "d-none";
-    let show = "d-flex";
-    classes.contains(hide)
-        ? classes.replace(hide, show)
-        : classes.replace(show, hide);
-});
-toggleThemeBtn.forEach((btn) => {
-    btn.addEventListener("click", () => {
-        let actualTheme = document.documentElement.getAttribute("theme");
-        let targetTheme = "";
-        actualTheme == "light" ? (targetTheme = "dark") : (targetTheme = "light");
-        document.documentElement.setAttribute("theme", targetTheme);
-    });
-});
 function getCurrentProduct(productId) {
     return __awaiter(this, void 0, void 0, function* () {
         currentProduct = yield store.catalog.findComments(productId);
