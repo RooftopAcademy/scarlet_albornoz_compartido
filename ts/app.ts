@@ -10,6 +10,12 @@ import orderConfirmation from "./Views/orderConfirmation.js";
 export let store: Store = new Store();
 export let currentProduct: Product;
 
+const hamburger: HTMLAnchorElement = document.getElementById(
+  "hamburger"
+) as HTMLAnchorElement;
+const toggleThemeBtn: HTMLButtonElement[] = Array.from(
+  document.getElementsByClassName("dark-mode")
+) as HTMLButtonElement[];
 const content: HTMLElement = document.getElementById("content") as HTMLElement;
 
 store.getProducts();
@@ -46,6 +52,30 @@ function findNavLinks(): void {
     });
   });
 }
+
+hamburger.addEventListener("click", () => {
+  let menu: HTMLElement = document.getElementById("nav-menu") as HTMLElement;
+  let classes: DOMTokenList = menu.classList;
+  let hide: string = "d-none";
+  let show: string = "d-flex";
+
+  classes.contains(hide)
+    ? classes.replace(hide, show)
+    : classes.replace(show, hide);
+});
+
+toggleThemeBtn.forEach((btn: HTMLButtonElement) => {
+  btn.addEventListener("click", () => {
+    let actualTheme: string = document.documentElement.getAttribute(
+      "theme"
+    ) as string;
+    let targetTheme = "";
+
+    actualTheme == "light" ? (targetTheme = "dark") : (targetTheme = "light");
+
+    document.documentElement.setAttribute("theme", targetTheme);
+  });
+});
 
 async function getCurrentProduct(productId: number): Promise<void> {
   currentProduct = await store.catalog.findComments(productId);
