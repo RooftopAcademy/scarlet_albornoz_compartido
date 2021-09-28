@@ -1,0 +1,24 @@
+{
+  "name": "scarlet_albornoz_compartido",
+  "version": "1.0.0",
+  "description": "Aquí verás mi proyecto para el Onboarding de Rooftop Academy.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RooftopAcademy/scarlet_albornoz_compartido.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RooftopAcademy/scarlet_albornoz_compartido/issues"
+  },
+  "homepage": "https://github.com/RooftopAcademy/scarlet_albornoz_compartido#readme",
+  "dependencies": {
+    "source-map-loader": "^3.0.0",
+    "ts-loader": "^9.2.6"
+  }
+}
