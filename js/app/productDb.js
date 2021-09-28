@@ -1,4 +1,4 @@
-let productList = [
+export let productDb = [
     {
         id: 1,
         img: '10-pcs-aluminium-rings.jpg',
@@ -41,4 +41,4 @@ let productList = [
         description: 'Looking to replace your binding rings? Or maybe you just began making your own agenda with our awesome mushroom hole puncher. This primary colors binding rings are just what you need. Each package includes 10 binding rings, and you can select from different sizes.',
         price: 1000
     }
-]
+];

@@ -2,36 +2,75 @@
 $sm: 576px;
 $md: 768px;
 $lg: 992px;
-$xl: 1280px;
+$xl: 1200px;
+
+@media (min-width: $sm) {
+  .col-card {
+    flex: 1 1 50%;
+  }
+  .product-detail {
+    width: 100%;
+
+    .card {
+      max-width: 100%;
+    }
+  }
+}
 
 @media (min-width: $md) {
   .col-card {
-    flex: 1 1 50%;
+    flex: 1 1 33.33333333%;
   }
 }
 
 @media (min-width: $lg) {
-  .product-detail {
-    width: 100%;
-    height: auto;
-    .col-card {
-      align-self: center;
-      .card {
-        flex-direction: row;
-        max-width: 100%;
-        height: fit-content;
-        .card-img {
-          width: 50%;
-        }
+  .col-card {
+    flex: 1 1 50%;
+    .card {
+      height: 100%;
+      align-items: center;
+      .card-img {
+        flex: 0 0 auto;
+        width: 50%;
+        height: auto;
+      }
+      .card-body {
+        flex: 0 0 auto;
+        width: 50%;
+        // display: flex;
+        height: 100%;
+        // flex-direction: column;
+        // justify-content: space-evenly;
       }
     }
   }
-  .col-card {
-    flex: 1 1 33.33%;
-  }
+
+  // .col-card {
+  //   align-self: center;
+  //   .card {
+  //     flex-direction: row;
+  //     max-width: 100%;
+  //     height: fit-content;
+  //     .card-img {
+  //       width: 50%;
+  //     }
+  //   }
+  // }
+  // .col-card {
+  //   flex: 1 1 33.33%;
+  // }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: $xl) {
+  .aside-logo,
+  .aside-dark-mode .hamburger {
+    display: none;
+  }
+
+  .home-logo {
+    max-height: 100%;
+  }
+
   .header,
   .footer {
     padding: 0.25rem 1rem;
@@ -48,72 +87,45 @@ $xl: 1280px;
     height: calc(100vh - 6rem);
 
     .navbar {
-      max-width: 250px;
+      width: 13vw;
+      max-width: 200px;
       height: 100%;
-      flex: 1 1;
-      align-items: center;
+      flex: 1 0;
       background-color: var(--side-bg);
+      align-items: center;
 
-      .navigation {
-        flex-direction: column;
-        text-align: center;
-        height: 100%;
-        max-height: 100vh;
-        justify-content: center;
+      .nav-header {
+        display: none;
+      }
 
-        .nav-header {
-          flex-grow: 1;
-          align-items: flex-end;
-
-          .home-logo {
-            flex-grow: 1;
-            display: flex;
-            justify-content: center;
-            padding: 1rem;
-
-            .home-img {
-              width: 50%;
-              // background-color: var(--secondary);
-            }
-          }
-
-          .hamburger {
-            display: none;
-          }
-
-          .dark-mode {
-            display: none;
-          }
-        }
-
-        .nav-menu {
-          flex-direction: column;
-          display: flex;
-          position: relative;
-          top: 0;
-          background-color: var(--side-bg);
-        }
+      .nav-menu {
+        display: flex;
+        background-color: var(--side-bg);
       }
     }
+
     .content {
       flex: auto 1 0;
       overflow-y: auto;
-      .product-detail {
+      height: calc(100vh - 6rem);
+
+      .product-detail,
+      .products,
+      .cart {
         max-width: 1000px;
-        height: calc(100vh - 6rem);
 
-        .col-card {
-          .card {
-            flex-direction: row;
+        // .col-card {
+        //   .card {
+        //     flex-direction: row;
 
-            .card-body {
-              height: unset;
-              .card-text {
-                margin: 1rem;
-              }
-            }
-          }
-        }
+        //     .card-body {
+        //       height: unset;
+        //       .card-text {
+        //         margin: 1rem;
+        //       }
+        //     }
+        //   }
+        // }
       }
     }
   }
