@@ -1,7 +1,7 @@
-import Catalog from "./Catalog.js";
-import Cart from "./Cart.js";
-import { productDb, ProductType } from "./productDb.js";
-import Product from "./Product.js";
+import Catalog from "./Catalog";
+import Cart from "./Cart";
+import { productDb, ProductType } from "./productDb";
+import Product from "./Product";
 
 export default class Store {
   catalog: Catalog = new Catalog();

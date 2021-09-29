@@ -1,13 +1,13 @@
-import Product from "./app/Product.js";
-import Store from "./app/Store.js";
-import homePage from "./Views/homePage.js";
-import productsPage from "./Views/productsPage.js";
-import productDetailPage from "./Views/productDetailPage.js";
-import errorPage from "./Views/errorPage.js";
-import cartPage from "./Views/cartPage.js";
-import orderConfirmation from "./Views/orderConfirmation.js";
-import hamburger from "./helpers/hamburger.js";
-import toggleTheme from "./helpers/theme.js";
+import Product from "./app/Product";
+import Store from "./app/Store";
+import homePage from "./Views/homePage";
+import productsPage from "./Views/productsPage";
+import productDetailPage from "./Views/productDetailPage";
+import errorPage from "./Views/errorPage";
+import cartPage from "./Views/cartPage";
+import orderConfirmation from "./Views/orderConfirmation";
+import hamburger from "./helpers/hamburger";
+import toggleTheme from "./helpers/theme";
 
 /**
  * This variable represents the store app

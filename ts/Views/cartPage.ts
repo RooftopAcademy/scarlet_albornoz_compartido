@@ -1,6 +1,6 @@
-import { store } from "../app.js";
-import Product from "../app/Product.js";
-import cartProduct from "./cartProduct.js";
+import { store } from "../app";
+import Product from "../app/Product";
+import cartProduct from "./cartProduct";
 
 export default function cartPage(): string {
   let cartProducts = store.cart.products;

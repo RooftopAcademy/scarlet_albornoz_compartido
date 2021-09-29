@@ -1,4 +1,4 @@
-import Product from "../app/Product.js";
+import Product from "../app/Product";
 
 export default function cartProduct(p: Product): string {
   return /* html*/ `

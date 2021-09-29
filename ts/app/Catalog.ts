@@ -1,5 +1,5 @@
-import Product from "./Product.js";
-import ProductListInterface from "./ProductListInterface.js";
+import Product from "./Product";
+import ProductListInterface from "./ProductListInterface";
 
 export default class Catalog implements ProductListInterface {
   products: Product[] = [];

@@ -1,5 +1,4 @@
-import Product from "../app/Product.js";
-import { Comment } from "../app/Product.js";
+import { Comment } from "../app/Product";
 
 export default function commentCard(comment: Comment) {
   return /* html */ `

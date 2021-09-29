@@ -1,4 +1,4 @@
-import { store } from "../app.js";
+import { store } from "../app";
 
 export default function orderConfirmation(): string {
   let data = store.cart.products;
