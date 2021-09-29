@@ -1,18 +1,26 @@
-const toggleThemeBtn: HTMLButtonElement[] = Array.from(
-    document.getElementsByClassName("dark-mode")
-  ) as HTMLButtonElement[];
+let defaultTheme = {
+  ['themeButtons' as string]: 'dark-mode',
+  ['themeEvent' as string]: 'click',
+  ['themeDark' as string]: 'dark',
+}
+
+let {themeButtons, themeEvent, themeDark} = defaultTheme
+
+const toggleThemeBtn: HTMLButtonElement[]=Array.from(document.getElementsByClassName(themeButtons)) as HTMLButtonElement[]
+
+
+
+export default function toggleTheme(document: Document,options=defaultTheme) {
+  
+  defaultTheme={
+    ...defaultTheme,
+    ...options
+  }
   
   toggleThemeBtn.forEach((btn: HTMLButtonElement) => {
-    btn.addEventListener("click", () => {
-      let actualTheme: string = document.documentElement.getAttribute(
-        "theme"
-      ) as string;
-      let targetTheme = "";
+    btn.addEventListener(themeEvent, () => {
+        document.documentElement.toggleAttribute(themeDark)
+    })
+  })
   
-      actualTheme == "light" ? (targetTheme = "dark") : (targetTheme = "light");
-  
-      document.documentElement.setAttribute("theme", targetTheme);
-    });
-  });
-
-export default toggleThemeBtn
+}

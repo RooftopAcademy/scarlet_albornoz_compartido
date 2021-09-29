@@ -17,7 +17,7 @@
   --dark-grey: #343a40;
 }
 
-html[theme=dark] {
+html[dark] {
   --nav-bg: #212529;
   --side-bg: #343a40;
   --text: #fff5e3;

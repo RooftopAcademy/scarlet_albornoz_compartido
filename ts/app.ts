@@ -7,7 +7,7 @@ import errorPage from "./Views/errorPage.js";
 import cartPage from "./Views/cartPage.js";
 import orderConfirmation from "./Views/orderConfirmation.js";
 import hamburger from "./helpers/hamburger.js";
-import toggleThemeBtn from "./helpers/theme.js";
+import toggleTheme from "./helpers/theme.js";
 
 /**
  * This variable represents the store app
@@ -30,7 +30,7 @@ hamburger(document, {
   buttonId : 'hamburger'
 })
 
-
+toggleTheme(document)
 
 const content: HTMLElement = document.getElementById("content") as HTMLElement;
 

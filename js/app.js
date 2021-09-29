@@ -14,27 +14,27 @@ import productDetailPage from "./Views/productDetailPage.js";
 import errorPage from "./Views/errorPage.js";
 import cartPage from "./Views/cartPage.js";
 import orderConfirmation from "./Views/orderConfirmation.js";
+import hamburger from "./helpers/hamburger.js";
+import toggleTheme from "./helpers/theme.js";
+/**
+ * This variable represents the store app
+ */
 export let store = new Store();
-export let currentProduct;
-const hamburger = document.getElementById("hamburger");
-hamburger.addEventListener("click", () => {
-    let menu = document.getElementById("nav-menu");
-    let classes = menu.classList;
-    let hide = "d-none";
-    let show = "show-menu";
-    classes.contains(hide)
-        ? classes.replace(hide, show)
-        : classes.replace(show, hide);
+/**
+ * Esta variable presenta al producto en el que clickeo
+ * o que va a agregar al carrito
+ *
+ * @todo This variable belongs to detail product
+ * @deprecated
+ */
+let currentProduct;
+/**
+ * Initialize the hamburguer menu
+ */
+hamburger(document, {
+    buttonId: 'hamburger'
 });
-const toggleThemeBtn = Array.from(document.getElementsByClassName("dark-mode"));
-toggleThemeBtn.forEach((btn) => {
-    btn.addEventListener("click", () => {
-        let actualTheme = document.documentElement.getAttribute("theme");
-        let targetTheme = "";
-        actualTheme == "light" ? (targetTheme = "dark") : (targetTheme = "light");
-        document.documentElement.setAttribute("theme", targetTheme);
-    });
-});
+toggleTheme(document);
 const content = document.getElementById("content");
 store.getProducts();
 const routes = {
