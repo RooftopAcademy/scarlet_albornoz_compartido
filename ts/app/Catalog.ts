@@ -5,9 +5,6 @@ export default class Catalog implements ProductListInterface {
   products: Product[] = [];
 
   async findComments(id: number): Promise<Product> {
-    // let product: Product = this.products.find(
-    //   (p: Product) => p.id == id
-    // ) as Product;
 
     let product: Product = this.findById(id);
 
