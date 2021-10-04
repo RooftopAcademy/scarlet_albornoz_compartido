@@ -8,7 +8,7 @@ import cartPage from '../Views/cartPage'
 import orderConfirmation from '../Views/orderConfirmation'
 import cartAlert from '../Views/cartAlert'
 
-const content: HTMLElement=document.getElementById('content') as HTMLElement
+const content = document.getElementById('content') as HTMLElement
 
 interface routesInt {
   [index: string]: any
@@ -73,9 +73,7 @@ function renderProductsPage(document: Document): void {
 
 
 function renderProductDetailPage(document: Document): void {
-  const detailsBtn: HTMLButtonElement[] = Array.from(
-    document.getElementsByClassName('js-product-detail')
-  ) as HTMLButtonElement[]
+  const detailsBtn = Array.from( document.getElementsByClassName('js-product-detail') ) as HTMLButtonElement[]
 
   detailsBtn.forEach((btn: HTMLButtonElement) => {
     btn.addEventListener('click', async (e: Event) => {
@@ -91,10 +89,10 @@ function renderProductDetailPage(document: Document): void {
 }
 
 function productAddedAlert(document: Document,product: Product) {
-  let alertContainer: HTMLElement=document.getElementById('alert-container') as HTMLElement
+  let alertContainer = document.getElementById('alert-container') as HTMLElement
   alertContainer.innerHTML += cartAlert(product)
   
-  let alerts: HTMLElement[]=Array.from(document.getElementsByClassName('alert')) as HTMLElement[]
+  let alerts = Array.from(document.getElementsByClassName('alert')) as HTMLElement[]
   
   function removeAlert() {alertContainer.removeChild(alerts[0])}
 
@@ -103,8 +101,7 @@ function productAddedAlert(document: Document,product: Product) {
 }
 
 function addProductToCart(document: Document, render?:string): void {
-  let addToCartBtn: HTMLButtonElement[]=Array.from(document.getElementsByClassName('js-add-to-cart')) as HTMLButtonElement[]
-  let alertContainer: HTMLElement = document.getElementById('alert-container') as HTMLElement
+  let addToCartBtn = Array.from(document.getElementsByClassName('js-add-to-cart')) as HTMLButtonElement[]
 
   addToCartBtn.forEach((btn: HTMLButtonElement) => {
     btn.addEventListener('click', (e: Event) => {
@@ -122,9 +119,7 @@ function addProductToCart(document: Document, render?:string): void {
 }
 
 function removeOneProduct(document: Document): void {
-  let removeOneBtn: HTMLButtonElement[] = Array.from(
-    document.getElementsByClassName('js-remove-1')
-  ) as HTMLButtonElement[]
+  let removeOneBtn = Array.from( document.getElementsByClassName('js-remove-1') ) as HTMLButtonElement[]
 
   removeOneBtn.forEach((btn: HTMLButtonElement) => {
     btn.addEventListener('click', (e: Event) => {
@@ -138,9 +133,7 @@ function removeOneProduct(document: Document): void {
 }
 
 function removeFromCart(document: Document): void {
-  let removeProductBtn: HTMLButtonElement[] = Array.from(
-    document.getElementsByClassName('js-remove-from-cart')
-  ) as HTMLButtonElement[]
+  let removeProductBtn = Array.from( document.getElementsByClassName('js-remove-from-cart') ) as HTMLButtonElement[]
 
   removeProductBtn.forEach((btn: HTMLButtonElement) => {
     btn.addEventListener('click', (e: Event) => {
@@ -153,9 +146,7 @@ function removeFromCart(document: Document): void {
 }
 
 function confirmOrder(document: Document): void {
-  let confirmBtn: HTMLButtonElement = document.getElementById(
-    'confirmOrder'
-  ) as HTMLButtonElement
+  let confirmBtn = document.getElementById( 'confirmOrder' ) as HTMLButtonElement
 
   let url = orderConfirmation()
 
