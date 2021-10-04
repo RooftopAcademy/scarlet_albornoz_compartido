@@ -31,4 +31,4 @@ store.getProducts()
  * Initialize router
  */
 
-router()
+router(document)

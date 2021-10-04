@@ -23,7 +23,7 @@ const routes: routesInt = {
   '/404': renderErrorPage,
 }
 
-export function router(): void {
+export function router(document: Document): void {
   let navLinks: Array<Element> = Array.from(
     document.getElementsByClassName('nav-link')
   )
@@ -51,43 +51,43 @@ async function getProductComments(productId: number): Promise<Product> {
   
 }
 
-function renderHomePage(): void {
+function renderHomePage(document: Document): void {
   content.innerHTML = homePage()
-  router()
+  router(document)
 }
 
-function renderErrorPage(): void {
+function renderErrorPage(document: Document): void {
   content.innerHTML = errorPage()
-  router()
+  router(document)
 }
 
 
-function renderProductsPage(): void {
+function renderProductsPage(document: Document): void {
   content.innerHTML = productsPage()
-  router()
- 
-  renderProductDetailPage()
+  router(document)
+
+  renderProductDetailPage(document)
 
   addProductToCart(document)
-
 }
 
 
-function renderProductDetailPage(): void {
-    const detailsBtn: HTMLButtonElement[] = Array.from( document.getElementsByClassName('js-product-detail') ) as HTMLButtonElement[]
+function renderProductDetailPage(document: Document): void {
+  const detailsBtn: HTMLButtonElement[] = Array.from(
+    document.getElementsByClassName('js-product-detail')
+  ) as HTMLButtonElement[]
 
-    detailsBtn.forEach((btn: HTMLButtonElement) => {
-      btn.addEventListener('click', async (e: Event) => {
-        e.preventDefault()
+  detailsBtn.forEach((btn: HTMLButtonElement) => {
+    btn.addEventListener('click', async (e: Event) => {
+      e.preventDefault()
 
-        let productId: number = parseInt(btn.dataset.productId as string)
-        let currentProduct=await getProductComments(productId)
-        
-        content.innerHTML = productDetailPage(currentProduct)
-        router()
-      })
+      let productId: number = parseInt(btn.dataset.productId as string)
+      let currentProduct = await getProductComments(productId)
+
+      content.innerHTML = productDetailPage(currentProduct)
+      router(document)
     })
-
+  })
 }
 
 function productAddedAlert(document: Document,product: Product) {
@@ -116,13 +116,13 @@ function addProductToCart(document: Document, render?:string): void {
       
       store.cart.addToCart(productId)
 
-      if(render) rendercartPage()
+      if(render) rendercartPage(document)
       else productAddedAlert(document, product)
     })
   })
 }
 
-function removeOneProduct(): void {
+function removeOneProduct(document: Document): void {
   let removeOneBtn: HTMLButtonElement[] = Array.from(
     document.getElementsByClassName('js-remove-1')
   ) as HTMLButtonElement[]
@@ -130,28 +130,30 @@ function removeOneProduct(): void {
   removeOneBtn.forEach(btn => {
     btn.addEventListener('click', (e: Event) => {
       e.preventDefault()
-  
+
       let productId: number = parseInt(btn.dataset.productId as string)
       store.cart.remove(productId)
-      rendercartPage()
+      rendercartPage(document)
     })
   })
 }
 
-function removeFromCart(): void {
-  let removeProductBtn: HTMLButtonElement[] = Array.from( document.getElementsByClassName('js-remove-from-cart') ) as HTMLButtonElement[]
+function removeFromCart(document: Document): void {
+  let removeProductBtn: HTMLButtonElement[] = Array.from(
+    document.getElementsByClassName('js-remove-from-cart')
+  ) as HTMLButtonElement[]
 
   removeProductBtn.forEach(btn => {
     btn.addEventListener('click', (e: Event) => {
       e.preventDefault()
       let productId: number = parseInt(btn.dataset.productId as string)
       store.cart.removeFromCart(productId)
-      rendercartPage()
+      rendercartPage(document)
     })
   })
 }
 
-function confirmOrder(): void {
+function confirmOrder(document: Document): void {
   let confirmBtn: HTMLButtonElement = document.getElementById(
     'confirmOrder'
   ) as HTMLButtonElement
@@ -164,14 +166,14 @@ function confirmOrder(): void {
   })
 }
 
-function rendercartPage(): void {
+function rendercartPage(document: Document): void {
   content.innerHTML = cartPage()
-  router()
+  router(document)
   addProductToCart(document, 'render')
-  removeOneProduct()
-  removeFromCart()
-  confirmOrder()
+  removeOneProduct(document)
+  removeFromCart(document)
+  confirmOrder(document)
 }
 
-renderHomePage()
+renderHomePage(document)
 
