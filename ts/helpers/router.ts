@@ -106,17 +106,16 @@ function addProductToCart(document: Document, render?:string): void {
   let addToCartBtn: HTMLButtonElement[]=Array.from(document.getElementsByClassName('js-add-to-cart')) as HTMLButtonElement[]
   let alertContainer: HTMLElement = document.getElementById('alert-container') as HTMLElement
 
-  addToCartBtn.forEach(btn => {
-    btn.addEventListener('click',(e: Event) => {
-
+  addToCartBtn.forEach((btn: HTMLButtonElement) => {
+    btn.addEventListener('click', (e: Event) => {
       e.preventDefault()
 
-      let productId: number=parseInt(btn.dataset.productId as string)
-      let product=store.catalog.findById(productId)
-      
+      let productId: number = parseInt(btn.dataset.productId as string)
+      let product = store.catalog.findById(productId)
+
       store.cart.addToCart(productId)
 
-      if(render) rendercartPage(document)
+      if (render) rendercartPage(document)
       else productAddedAlert(document, product)
     })
   })
@@ -127,7 +126,7 @@ function removeOneProduct(document: Document): void {
     document.getElementsByClassName('js-remove-1')
   ) as HTMLButtonElement[]
 
-  removeOneBtn.forEach(btn => {
+  removeOneBtn.forEach((btn: HTMLButtonElement) => {
     btn.addEventListener('click', (e: Event) => {
       e.preventDefault()
 
@@ -143,7 +142,7 @@ function removeFromCart(document: Document): void {
     document.getElementsByClassName('js-remove-from-cart')
   ) as HTMLButtonElement[]
 
-  removeProductBtn.forEach(btn => {
+  removeProductBtn.forEach((btn: HTMLButtonElement) => {
     btn.addEventListener('click', (e: Event) => {
       e.preventDefault()
       let productId: number = parseInt(btn.dataset.productId as string)

@@ -6,7 +6,7 @@ export default function productDetailPage(product: Product): string {
   let comments: Comment[] = product.comments;
   let commentsHTML: string = "";
 
-  comments.forEach((comment) => {
+  comments.forEach((comment: Comment) => {
     commentsHTML += commentCard(comment);
   });
 
