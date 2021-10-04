@@ -1,6 +1,6 @@
-import Product from "../app/Product.js";
-import { Comment } from "../app/Product.js";
-import commentCard from "./commentCard.js";
+import Product from "../app/Product";
+import { Comment } from "../app/Product";
+import commentCard from "./commentCard";
 
 export default function productDetailPage(product: Product): string {
   let comments: Comment[] = product.comments;

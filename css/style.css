@@ -17,7 +17,7 @@
   --dark-grey: #343a40;
 }
 
-html[theme=dark] {
+html[dark] {
   --nav-bg: #212529;
   --side-bg: #343a40;
   --text: #fff5e3;
@@ -472,4 +472,76 @@ main {
   border-bottom-right-radius: inherit;
   border-bottom-left-radius: inherit;
   font-weight: bold;
+}
+
+#alert-container {
+  position: absolute;
+  top: 3.25rem;
+  right: 0;
+}
+
+.alert {
+  margin-bottom: 0.25rem;
+  display: flex;
+  background: var(--background);
+  color: var(--text);
+  min-width: 400px;
+  max-width: 400px;
+  text-align: center;
+  padding-left: 0.25rem;
+  right: 0;
+  border-radius: 0.25rem;
+  border-left: 8px solid var(--primary);
+  height: 4rem;
+}
+.alert .fa-shopping-cart {
+  font-size: 1.25rem;
+  margin: 0 0.5rem;
+}
+.alert .alert-img {
+  height: 2rem;
+  margin: 0 0.5rem;
+}
+.alert .alert-msg {
+  font-size: 0.8rem;
+}
+.alert .close-alert-btn {
+  height: 100%;
+  width: 2rem;
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+
+.show-alert {
+  -webkit-animation: slide 0.5s ease forwards;
+          animation: slide 0.5s ease forwards;
+}
+
+@-webkit-keyframes slide {
+  0% {
+    transform: translateX(100%);
+  }
+  40% {
+    transform: translateX(-10%);
+  }
+  80% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-10px);
+  }
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(100%);
+  }
+  40% {
+    transform: translateX(-10%);
+  }
+  80% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-10px);
+  }
 }/*# sourceMappingURL=style.css.map */

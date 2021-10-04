@@ -17,12 +17,12 @@ export default function hamburger(document : Document, options = defaultOptions)
         ...options
     }
 
-    const element: HTMLAnchorElement = document.getElementById(buttonId) as HTMLAnchorElement;
+    const hamburgerElement: HTMLAnchorElement = document.getElementById(buttonId) as HTMLAnchorElement;
 
-    element.addEventListener(eventName, () => {
+    hamburgerElement.addEventListener(eventName, () => {
         classes.toggle(hideClass)
         classes.toggle(showClass)
     });
 
-    return element
+    return hamburgerElement
 }

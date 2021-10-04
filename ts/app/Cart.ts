@@ -1,6 +1,6 @@
-import Product from "./Product.js";
-import Catalog from "./Catalog.js";
-import { store } from "../app.js";
+import Product from "./Product";
+import Catalog from "./Catalog";
+import { store } from "../app";
 
 export default class Cart extends Catalog {
   findProduct(pId: number): number {

@@ -28,7 +28,7 @@ $background-dark: #22262ad9;
   --dark-grey: #{$dark-grey};
 }
 
-html[theme="dark"] {
+html[dark] {
   --nav-bg: #{$dark};
   --side-bg: #{$dark-grey};
   --text: #{$light};

@@ -1,4 +1,4 @@
-import Product from "../app/Product.js";
+import Product from "../app/Product";
 
 export default function cartProduct(p: Product): string {
   return /* html*/ `
@@ -11,7 +11,7 @@ export default function cartProduct(p: Product): string {
         </div>
         <div class="cart-controls d-flex flex-col j-space-between">
         <span class="item-qty">
-                <button class="btn js-add-1" data-product-id="${
+                <button class="btn js-add-to-cart" data-product-id="${
                   p.id
                 }">+</button>
                  ${p.qty} 

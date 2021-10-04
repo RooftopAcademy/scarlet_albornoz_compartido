@@ -1,7 +1,6 @@
-import Product from "../app/Product.js";
-import Catalog from "../app/Catalog.js";
-import { store } from "../app.js";
-import productCard from "./productCard.js";
+import Product from "../app/Product";
+import { store } from "../app";
+import productCard from "./productCard";
 
 export default function productsPage(): string {
   let products: Product[] = store.catalog.products;
