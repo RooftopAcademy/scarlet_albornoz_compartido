@@ -35,9 +35,9 @@ export function router(document: Document): void {
       let link = target.pathname
 
       if (routes[link]) {
-        routes[link]()
+        routes[link](document)
       } else {
-        routes['/404']()
+        routes['/404'](document)
       }
     })
   })
