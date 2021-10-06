@@ -1,11 +1,12 @@
 import { store } from "../app";
+import Product from "../app/Product";
 
 export default function orderConfirmation(): string {
   let data = store.cart.products;
   let productList: string = "";
   let cartTotal: number = 0;
 
-  data.forEach((product) => {
+  data.forEach((product: Product) => {
     productList += `- ${product.name}%0A
            ${product.qty}%0A
            ${product.price * product.qty}%0A`;

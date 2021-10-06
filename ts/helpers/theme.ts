@@ -6,7 +6,7 @@ let defaultTheme = {
 
 let {themeButtons, themeEvent, themeDark} = defaultTheme
 
-const toggleThemeBtn: HTMLButtonElement[]=Array.from(document.getElementsByClassName(themeButtons)) as HTMLButtonElement[]
+const toggleThemeBtn = Array.from(document.getElementsByClassName(themeButtons)) as HTMLButtonElement[]
 
 
 

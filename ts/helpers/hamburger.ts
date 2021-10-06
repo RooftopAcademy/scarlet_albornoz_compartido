@@ -8,7 +8,7 @@ let defaultOptions = {
 
 let {buttonId, menuId, eventName, hideClass, showClass} = defaultOptions
 
-let menuElement: HTMLElement = document.getElementById(menuId) as HTMLElement;
+let menuElement = document.getElementById(menuId) as HTMLElement;
 let classes: DOMTokenList = menuElement.classList;
 
 export default function hamburger(document : Document, options = defaultOptions) {
@@ -17,7 +17,7 @@ export default function hamburger(document : Document, options = defaultOptions)
         ...options
     }
 
-    const hamburgerElement: HTMLAnchorElement = document.getElementById(buttonId) as HTMLAnchorElement;
+    const hamburgerElement = document.getElementById(buttonId) as HTMLAnchorElement;
 
     hamburgerElement.addEventListener(eventName, () => {
         classes.toggle(hideClass)

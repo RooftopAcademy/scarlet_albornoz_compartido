@@ -13,10 +13,8 @@ export default class Catalog implements ProductListInterface {
     return product;
   }
 
-  findById(id: number): Product {
-    let product: Product = this.products.find(
-      (p: Product) => p.id == id
-    ) as Product;
+  findById(id: number) {
+    let product = this.products.find( (p: Product) => p.id == id ) as Product;
 
     return product;
   }
