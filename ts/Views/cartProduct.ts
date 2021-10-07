@@ -1,6 +1,7 @@
-import Product from "../app/Product";
+import Product from '../app/Product'
 
 export default function cartProduct(p: Product): string {
+  let price = p.price * p.qty
   return /* html*/ `
   <li class="cart-item d-flex a-items-center">
       <img src="img/${p.img}" alt="product image" class="cart-item-img">
@@ -9,7 +10,7 @@ export default function cartProduct(p: Product): string {
           <p class="cart-item-name">
             ${p.name}
           </p>
-          <p class="cart-item-price">$${p.price*p.qty}</p>
+          <p class="cart-item-price">${price.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' })}</p>
         </div>
         <div class="cart-footer d-flex j-space-between">
           <span class="item-qty">

@@ -28,12 +28,12 @@ export default function cartPage(): string {
             ${cartProductsHTML}
             <li class="cart-item total-price d-flex j-space-between">
                 <p>Total (ARS)</p>
-                <p>$${cartProductsTotal}</p>
+                <p>${cartProductsTotal.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' })}</p>
             </li>
         </ul>
         <div class="d-flex j-center">
             <button class="btn" id="confirmOrder">Confirm my order</button>
         </div>
     </section>
-    `;
+    `
 }
