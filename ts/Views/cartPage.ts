@@ -18,22 +18,22 @@ export default function cartPage(): string {
   }
 
   return /* html */ `
-    <section class="section cart">
+    <section class="section cart d-flex flex-col">
         <h4 class="d-flex j-space-between a-items-center cart-header">
             <span><img src="img/mushi.ico" alt="Mushi logo" class="cart-logo"></span>
             <span class="cart-title">Your cart</span>
             <span class="cart-counter">${cartProductsCounter}</span>
         </h4>
-        <ul class="cart-list d-flex flex-col">
+        <ul class="cart-list a-self-center d-flex flex-col">
             ${cartProductsHTML}
-            <li class="cart-list-item total-price d-flex j-space-between">
+            <li class="cart-item total-price d-flex j-space-between">
                 <p>Total (ARS)</p>
-                <p>$${cartProductsTotal}</p>
+                <p>${cartProductsTotal.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' })}</p>
             </li>
         </ul>
         <div class="d-flex j-center">
             <button class="btn" id="confirmOrder">Confirm my order</button>
         </div>
     </section>
-    `;
+    `
 }

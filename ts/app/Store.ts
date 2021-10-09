@@ -15,7 +15,7 @@ export default class Store {
       product.img = p.img;
       product.name = p.name;
       product.description = p.description;
-      product.price = p.price;
+      product.price = Math.floor(Math.random() * (2500 - 700)) + 700
 
       this.catalog.add(product);
     });
