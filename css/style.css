@@ -332,6 +332,13 @@ main {
   width: 100%;
 }
 
+.item-qty {
+  width: 6.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .cart {
   width: 100%;
 }
@@ -517,6 +524,9 @@ main {
     flex: 0 0 auto;
     width: 50%;
     height: 100%;
+  }
+  .col-card .comment-card .card-body {
+    width: 100%;
   }
 }
 @media (min-width: 1200px) {
