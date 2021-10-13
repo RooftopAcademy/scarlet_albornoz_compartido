@@ -14,7 +14,7 @@ export default class Catalog implements ProductListInterface {
   }
 
   findById(id: number): Product {
-    let product = this.products.find( (p: Product) => {p.id == id} ) as Product;
+    let product = this.products.find( (p: Product) => p.id == id ) as Product;
     return product;
   }
 
