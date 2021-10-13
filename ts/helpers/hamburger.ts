@@ -1,15 +1,19 @@
-let defaultOptions = {
-    ['buttonId' as string] : 'hamburger',
-    ['menuId' as string] : 'nav-menu',
-    ['eventName' as string] : 'click',
-    ['hideClass' as string] : 'd-none',
-    ['showClass' as string] : 'show-menu'
+interface defaultOptionsInterface {
+    [index: string]: string
 }
 
-let {buttonId, menuId, eventName, hideClass, showClass} = defaultOptions
+let defaultOptions: defaultOptionsInterface = {
+    'buttonId': 'hamburger',
+    'menuId': 'nav-menu',
+    'eventName': 'click',
+    'hideClass': 'd-none',
+    'showClass': 'show-menu'
+}
 
-let menuElement = document.getElementById(menuId) as HTMLElement;
-let classes: DOMTokenList = menuElement.classList;
+const {buttonId, menuId, eventName, hideClass, showClass} = defaultOptions
+
+const menuElement = document.getElementById(menuId) as HTMLElement;
+const classes: DOMTokenList = menuElement.classList;
 
 export default function hamburger(document : Document, options = defaultOptions) {
     defaultOptions = {

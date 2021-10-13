@@ -7,11 +7,12 @@ import errorPage from '../Views/errorPage'
 import cartPage from '../Views/cartPage'
 import orderConfirmation from '../Views/orderConfirmation'
 import cartAlert from '../Views/cartAlert'
+import { links, cartButtons, getCartBtns } from './domElements'
 
 const content = document.getElementById('content') as HTMLElement
 
 interface routesInt {
-  [index: string]: any
+  [index: string]: ()=>void
 }
 
 const routes: routesInt = {
@@ -23,21 +24,18 @@ const routes: routesInt = {
   '/404': renderErrorPage,
 }
 
-export function router(document: Document): void {
-  let navLinks: Array<Element> = Array.from(
-    document.getElementsByClassName('nav-link')
-  )
+export default function router(element:keyof typeof links): void {
 
-  navLinks.forEach((nav: Element) => {
+  links[element]().forEach((nav: Element) => {
     nav.addEventListener('click', function (e: Event) {
       e.preventDefault()
       let target = e.target as HTMLAnchorElement
       let link = target.pathname
 
       if (routes[link]) {
-        routes[link](document)
+        routes[link]()
       } else {
-        routes['/404'](document)
+        routes['/404']()
       }
     })
   })
@@ -51,31 +49,32 @@ async function getProductComments(productId: number): Promise<Product> {
   
 }
 
-function renderHomePage(document: Document): void {
+function renderHomePage(): void {
   content.innerHTML = homePage()
-  router(document)
+  router('content')
 }
 
-function renderErrorPage(document: Document): void {
+function renderErrorPage(): void {
   content.innerHTML = errorPage()
-  router(document)
+  router('content')
 }
 
 
-function renderProductsPage(document: Document): void {
+function renderProductsPage(): void {
   content.innerHTML = productsPage()
-  router(document)
+  router('content')
 
-  renderProductDetailPage(document)
+  renderProductDetailPage()
 
-  addProductToCart(document)
+  addProductToCart()
 }
 
 
-function renderProductDetailPage(document: Document): void {
-  const detailsBtn = Array.from( document.getElementsByClassName('js-product-detail') ) as HTMLButtonElement[]
+function renderProductDetailPage(): void {
+  getCartBtns()
+  const detailsBtn = cartButtons.details
 
-  detailsBtn.forEach((btn: HTMLButtonElement) => {
+  detailsBtn.forEach((btn) => {
     btn.addEventListener('click', async (e: Event) => {
       e.preventDefault()
 
@@ -83,12 +82,18 @@ function renderProductDetailPage(document: Document): void {
       let currentProduct = await getProductComments(productId)
 
       content.innerHTML = productDetailPage(currentProduct)
-      router(document)
+      router('content')
     })
   })
 }
 
-function productAddedAlert(document: Document,product: Product) {
+// export async function renderProductDetailPage(pId: number): Promise<void> {
+//   let currentProduct = await getProductComments(pId)
+//   content.innerHTML = productDetailPage(currentProduct)
+//   router('content')
+// }
+
+function productAddedAlert(product: Product) {
   let alertContainer = document.getElementById('alert-container') as HTMLElement
   alertContainer.innerHTML += cartAlert(product)
   
@@ -100,7 +105,7 @@ function productAddedAlert(document: Document,product: Product) {
   clearInterval(interval)
 }
 
-function addProductToCart(document: Document, render?:string): void {
+function addProductToCart(render?:string): void {
   let addToCartBtn = Array.from(document.getElementsByClassName('js-add-to-cart')) as HTMLButtonElement[]
 
   addToCartBtn.forEach((btn: HTMLButtonElement) => {
@@ -110,15 +115,15 @@ function addProductToCart(document: Document, render?:string): void {
       let productId: number = parseInt(btn.dataset.productId as string)
       let product = store.catalog.findById(productId)
 
-      store.cart.addToCart(productId)
+      store.cart.add(product)
 
-      if (render) rendercartPage(document)
-      else productAddedAlert(document, product)
+      if (render) rendercartPage()
+      else productAddedAlert(product)
     })
   })
 }
 
-function removeOneProduct(document: Document): void {
+function removeFromCart(): void {
   let removeOneBtn = Array.from( document.getElementsByClassName('js-remove-1') ) as HTMLButtonElement[]
 
   removeOneBtn.forEach((btn: HTMLButtonElement) => {
@@ -126,26 +131,30 @@ function removeOneProduct(document: Document): void {
       e.preventDefault()
 
       let productId: number = parseInt(btn.dataset.productId as string)
-      store.cart.remove(productId)
-      rendercartPage(document)
+      let product = store.catalog.findById(productId)
+
+      store.cart.remove(product)
+      rendercartPage()
     })
   })
 }
 
-function removeFromCart(document: Document): void {
+function deleteFromCart(): void {
   let removeProductBtn = Array.from( document.getElementsByClassName('js-remove-from-cart') ) as HTMLButtonElement[]
 
   removeProductBtn.forEach((btn: HTMLButtonElement) => {
     btn.addEventListener('click', (e: Event) => {
       e.preventDefault()
       let productId: number = parseInt(btn.dataset.productId as string)
-      store.cart.removeFromCart(productId)
-      rendercartPage(document)
+      let product = store.catalog.findById(productId)
+  
+      store.cart.delete(product)
+      rendercartPage()
     })
   })
 }
 
-function confirmOrder(document: Document): void {
+function confirmOrder(): void {
   let confirmBtn = document.getElementById( 'confirmOrder' ) as HTMLButtonElement
 
   let url = orderConfirmation()
@@ -156,14 +165,13 @@ function confirmOrder(document: Document): void {
   })
 }
 
-function rendercartPage(document: Document): void {
+function rendercartPage(): void {
   content.innerHTML = cartPage()
-  router(document)
-  addProductToCart(document, 'render')
-  removeOneProduct(document)
-  removeFromCart(document)
-  confirmOrder(document)
+  router('content')
+  addProductToCart('render')
+  removeFromCart()
+  deleteFromCart()
+  confirmOrder()
 }
 
-renderHomePage(document)
-
+renderHomePage()
