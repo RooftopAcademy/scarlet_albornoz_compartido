@@ -72,12 +72,13 @@ body {
 .content {
   flex: 1 1 0;
 }
-.product-detail {
-  .col-card {
-    .card {
-      max-width: 450px;
-    }
-  }
+
+.btn-square {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .btn-square {

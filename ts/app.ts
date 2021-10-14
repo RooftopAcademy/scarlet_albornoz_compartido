@@ -1,8 +1,7 @@
-import Product from './app/Product'
+import router from './helpers/router'
 import Store from './app/Store'
 import hamburger from './helpers/hamburger'
 import toggleTheme from './helpers/theme'
-import { router} from './helpers/router'
 
 /**
  * Initialize the hamburguer menu
@@ -17,6 +16,12 @@ hamburger(document, {
 toggleTheme(document)
 
 /**
+ * Initialize router
+ */
+
+router('navbar')
+
+/**
  * This variable represents the store app
  */
 export let store: Store = new Store()
@@ -26,9 +31,3 @@ export let store: Store = new Store()
  */
 
 store.getProducts()
-
-/**
- * Initialize router
- */
-
-router(document)

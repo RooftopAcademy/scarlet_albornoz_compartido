@@ -15,8 +15,8 @@ $xl: 1200px;
       max-width: 100%;
     }
   }
-    .cart-item {
-    flex-direction: row!important;
+  .cart-item {
+    flex-direction: row !important;
   }
 }
 
@@ -41,6 +41,11 @@ $xl: 1200px;
         flex: 0 0 auto;
         width: 50%;
         height: 100%;
+      }
+    }
+    .comment-card {
+      .card-body {
+        width: 100%;
       }
     }
   }
@@ -73,10 +78,8 @@ $xl: 1200px;
     height: calc(100vh - 6rem);
 
     .navbar {
-      width: 13vw;
-      max-width: 200px;
+      width: 200px;
       height: 100%;
-      flex: 1 0;
       background-color: var(--side-bg);
       align-items: center;
 
