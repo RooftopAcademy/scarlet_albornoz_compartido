@@ -14,11 +14,13 @@ export default function cartProduct(p: Product): string {
         </div>
         <div class="cart-footer d-flex j-space-between">
           <span class="item-qty">
+
             <button class="btn btn-square js-remove" data-product-id="${p.id}">-</button>
             ${p.qty}
             <button class="btn btn-square js-add" data-product-id="${p.id}">+</button>
           </span>
           <button class="btn btn-square d-flex j-center a-items-center a-self-end js-delete" data-product-id="${p.id}">
+
           <i class="far fa-trash-alt"></i>
         </button>
         </div>
