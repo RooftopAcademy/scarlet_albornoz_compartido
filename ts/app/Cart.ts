@@ -24,7 +24,7 @@ export default class Cart extends Catalog {
     }
   }
 
-  remove(p: Product): void {
+  substract(p: Product): void {
 
     let product = p
     let index = this.findInCart(product.id)
