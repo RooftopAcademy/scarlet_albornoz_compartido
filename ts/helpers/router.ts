@@ -123,7 +123,9 @@ function substractFromCart(): void {
       let product = store.catalog.findById(productId)
 
       store.cart.substract(product)
+
       renderCartPage()
+
     })
   })
 }
