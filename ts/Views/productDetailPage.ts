@@ -22,7 +22,7 @@ export default function productDetailPage(product: Product): string {
                     <p class="card-text">
                         ${product.description}
                     </p>
-                    <div class="d-flex">
+                    <div class="d-flex j-space-between">
                         <span class="item-qty">
                             <button class="btn btn-square js-remove" data-product-id="${product.id}">-</button>
                             ${product.qty}

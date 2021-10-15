@@ -14,19 +14,16 @@ export default function productsPage(): string {
   return /* html */ `
   <div class="d-flex j-space-between w-100 a-items-center sorting-div">
     <div class="d-flex j-space-between sorting-selects">
-      <div class="sorting-type d-flex flex-col j-space-between">
-          <label>
-            <input type="radio" id="asc" name="sorting-type" value="asc" checked>
-            Ascending
-          </label>
-          <label>
-            <input type="radio" id="desc" name="sorting-type" value="desc">
-            Descending
-          </label>
-      </div>
+      <label class="d-flex flex-col">
+        Sort:
+        <select id="sorting-type" class="sort-by">
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
+        </select>
+      </label>
       <label class="d-flex flex-col">
         Sort by:
-        <select id="name" class="sort-by">
+        <select id="key" class="sort-by">
           <option value="default">Default</option>
           <option value="name">Name</option>
           <option value="price">Price</option>
@@ -38,8 +35,6 @@ export default function productsPage(): string {
       </label>
 
     </div>
-
-    <button class="btn btn-square"><i class="fas fa-undo"></i></button>
 
     </div>
 
