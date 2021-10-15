@@ -85,8 +85,7 @@ function renderProductDetailPage(): void {
       content.innerHTML = productDetailPage(currentProduct)
       router('content')
       getCartBtns()
-      addProductToCart(renderProductDetailPage)
-      substractFromCart()
+      addProductToCart()
     })
   })
 }
@@ -96,7 +95,7 @@ function productAddedAlert(product: Product) {
   alertContainer.innerHTML += cartAlert(product)
 }
 
-function addProductToCart(callback?:Function): void {
+function addProductToCart(render?:string): void {
 
   cartButtons.addToCart.forEach((btn: HTMLButtonElement) => {
     btn.addEventListener('click', (e: Event) => {
@@ -107,7 +106,7 @@ function addProductToCart(callback?:Function): void {
 
       store.cart.add(product)
 
-      if (callback) callback()
+      if (render) renderCartPage()
       else productAddedAlert(product)
     })
   })
@@ -157,7 +156,8 @@ function confirmOrder(): void {
 function renderCartPage(): void {
   content.innerHTML = cartPage()
   router('content')
-  addProductToCart(renderCartPage)
+  getCartBtns()
+  addProductToCart('render')
   substractFromCart()
   deleteFromCart()
   confirmOrder()

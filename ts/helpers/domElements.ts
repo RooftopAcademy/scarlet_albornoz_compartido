@@ -29,6 +29,8 @@ export function getCartBtns(): void {
     let substractFromCart = Array.from(content!.getElementsByClassName('js-substract')) as Array<HTMLButtonElement>
     let deleteFromCart = Array.from(content!.getElementsByClassName('js-delete')) as Array<HTMLButtonElement>
 
+    console.log(`details: ${details}, addToCart: ${addToCart}, substractFromCart: ${substractFromCart}, deleteFromCart: ${deleteFromCart}`)
+
     details.length > 0 ? cartButtons.details = details : cartButtons.details = []
     addToCart.length > 0 ? cartButtons.addToCart = addToCart : cartButtons.addToCart = []
     substractFromCart.length > 0 ? cartButtons.substractFromCart = substractFromCart : cartButtons.substractFromCart = []
