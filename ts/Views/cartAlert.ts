@@ -10,7 +10,7 @@ export default function cartAlert(p: Product) {
                 <span class="alert-msg">
                     ${p.name} <br /> added to cart
                 </span>
-                <button class="btn close-alert-btn d-flex a-items-center j-center">
+                <button class="btn close-alert-btn d-flex a-items-center j-center" onclick="this.parentNode.remove()">
                     <span class="fas fa-times"></span>
                 </button>
             </div>

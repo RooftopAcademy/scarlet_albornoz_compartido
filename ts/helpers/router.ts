@@ -20,7 +20,6 @@ const routes: routesInt = {
   '/products': renderProductsPage,
   '/cart': rendercartPage,
   '/productDetail': renderProductDetailPage,
-  // '/about': aboutPage
   '/404': renderErrorPage,
 }
 
@@ -133,7 +132,7 @@ function removeFromCart(): void {
       let productId: number = parseInt(btn.dataset.productId as string)
       let product = store.catalog.findById(productId)
 
-      store.cart.remove(product)
+      store.cart.substract(product)
       rendercartPage()
     })
   })
