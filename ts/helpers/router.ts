@@ -7,7 +7,7 @@ import errorPage from '../Views/errorPage'
 import cartPage from '../Views/cartPage'
 import orderConfirmation from '../Views/orderConfirmation'
 import cartAlert from '../Views/cartAlert'
-import { links, cartButtons, getCartBtns } from './domElements'
+import { links, cartButtons, getCartBtns, getSortingOptions, sortingOptions } from './domElements'
 
 const content = document.getElementById('content') as HTMLElement
 
@@ -18,7 +18,7 @@ interface routesInt {
 const routes: routesInt = {
   '/': renderHomePage,
   '/products': renderProductsPage,
-  '/cart': rendercartPage,
+  '/cart': renderCartPage,
   '/productDetail': renderProductDetailPage,
   '/404': renderErrorPage,
 }
@@ -63,17 +63,19 @@ function renderProductsPage(): void {
   content.innerHTML = productsPage()
   router('content')
 
+  getSortingOptions()
+  sortProductList()
+  store.catalog.sorting.key == 'id' ? sortingOptions.sortKey!.value = 'default' : sortingOptions.sortKey!.value = store.catalog.sorting.key
+  sortingOptions.sortType!.value = store.catalog.sorting.sortType
   renderProductDetailPage()
-
+  getCartBtns()
   addProductToCart()
 }
 
 
 function renderProductDetailPage(): void {
-  getCartBtns()
-  const detailsBtn = cartButtons.details
-
-  detailsBtn.forEach((btn) => {
+  
+  cartButtons.details.forEach((btn) => {
     btn.addEventListener('click', async (e: Event) => {
       e.preventDefault()
 
@@ -82,32 +84,21 @@ function renderProductDetailPage(): void {
 
       content.innerHTML = productDetailPage(currentProduct)
       router('content')
+      getCartBtns()
+      addProductToCart(renderProductDetailPage)
+      substractFromCart()
     })
   })
 }
 
-// export async function renderProductDetailPage(pId: number): Promise<void> {
-//   let currentProduct = await getProductComments(pId)
-//   content.innerHTML = productDetailPage(currentProduct)
-//   router('content')
-// }
-
 function productAddedAlert(product: Product) {
   let alertContainer = document.getElementById('alert-container') as HTMLElement
   alertContainer.innerHTML += cartAlert(product)
-  
-  let alerts = Array.from(document.getElementsByClassName('alert')) as HTMLElement[]
-  
-  function removeAlert() {alertContainer.removeChild(alerts[0])}
-
-  let interval=setInterval(removeAlert,3000)
-  clearInterval(interval)
 }
 
-function addProductToCart(render?:string): void {
-  let addToCartBtn = Array.from(document.getElementsByClassName('js-add-to-cart')) as HTMLButtonElement[]
+function addProductToCart(callback?:Function): void {
 
-  addToCartBtn.forEach((btn: HTMLButtonElement) => {
+  cartButtons.addToCart.forEach((btn: HTMLButtonElement) => {
     btn.addEventListener('click', (e: Event) => {
       e.preventDefault()
 
@@ -116,16 +107,16 @@ function addProductToCart(render?:string): void {
 
       store.cart.add(product)
 
-      if (render) rendercartPage()
+      if (callback) callback()
       else productAddedAlert(product)
     })
   })
+
 }
 
-function removeFromCart(): void {
-  let removeOneBtn = Array.from( document.getElementsByClassName('js-remove-1') ) as HTMLButtonElement[]
-
-  removeOneBtn.forEach((btn: HTMLButtonElement) => {
+function substractFromCart(): void {
+  
+  cartButtons.substractFromCart.forEach((btn: HTMLButtonElement) => {
     btn.addEventListener('click', (e: Event) => {
       e.preventDefault()
 
@@ -133,22 +124,21 @@ function removeFromCart(): void {
       let product = store.catalog.findById(productId)
 
       store.cart.substract(product)
-      rendercartPage()
+      renderCartPage()
     })
   })
 }
 
 function deleteFromCart(): void {
-  let removeProductBtn = Array.from( document.getElementsByClassName('js-remove-from-cart') ) as HTMLButtonElement[]
-
-  removeProductBtn.forEach((btn: HTMLButtonElement) => {
+  
+  cartButtons.deleteFromCart.forEach((btn: HTMLButtonElement) => {
     btn.addEventListener('click', (e: Event) => {
       e.preventDefault()
       let productId: number = parseInt(btn.dataset.productId as string)
       let product = store.catalog.findById(productId)
   
       store.cart.delete(product)
-      rendercartPage()
+      renderCartPage()
     })
   })
 }
@@ -164,13 +154,33 @@ function confirmOrder(): void {
   })
 }
 
-function rendercartPage(): void {
+function renderCartPage(): void {
   content.innerHTML = cartPage()
   router('content')
-  addProductToCart('render')
-  removeFromCart()
+  addProductToCart(renderCartPage)
+  substractFromCart()
   deleteFromCart()
   confirmOrder()
 }
+
+
+
+function sortProductList(): void {
+
+  let sortOptions = [sortingOptions.sortKey, sortingOptions.sortType]
+
+  sortOptions.forEach(opt => {
+    opt!.addEventListener('change', ()=>{
+      let sortOrder = sortingOptions.sortType!.value
+      let sortingKey
+
+      sortingOptions.sortKey!.value == 'default' ? sortingKey = 'id' : sortingKey = sortingOptions.sortKey!.value as keyof Product
+
+      store.catalog.sortByKey(sortingKey, sortOrder)
+      renderProductsPage()
+    })
+  });
+}
+
 
 renderHomePage()
