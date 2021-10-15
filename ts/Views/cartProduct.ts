@@ -15,7 +15,7 @@ export default function cartProduct(p: Product): string {
         <div class="cart-footer d-flex j-space-between">
           <span class="item-qty">
 
-            <button class="btn btn-square js-remove" data-product-id="${p.id}">-</button>
+            <button class="btn btn-square js-substract" data-product-id="${p.id}">-</button>
             ${p.qty}
             <button class="btn btn-square js-add" data-product-id="${p.id}">+</button>
           </span>
