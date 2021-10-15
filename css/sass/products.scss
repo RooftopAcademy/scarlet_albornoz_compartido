@@ -2,4 +2,30 @@
   background-color: var(--background);
   padding: 0.25rem;
   margin: auto;
+  position: relative;
+  top: 3rem;
+}
+
+.sorting-div {
+  height: 3rem;
+  padding: 2rem;
+  margin: 0.5rem 0;
+  background: var(--background);
+  position: sticky;
+  z-index: 1;
+}
+
+.sorting-selects {
+  font-size: 0.8rem;
+  width: 100%;
+}
+
+.sort-by {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+option:hover {
+  background-color: var(--hover);
+  color: var(--text);
 }

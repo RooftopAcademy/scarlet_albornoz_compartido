@@ -24,6 +24,10 @@ $xl: 1200px;
   .col-card {
     flex: 1 1 33.33333333%;
   }
+
+  .sorting-selects{
+    width: 50%;
+  }
 }
 
 @media (min-width: $lg) {
@@ -49,7 +53,6 @@ $xl: 1200px;
       }
     }
   }
-
 }
 
 @media (min-width: $xl) {
@@ -104,5 +107,13 @@ $xl: 1200px;
         max-width: 1000px;
       }
     }
+  }
+
+  .sorting-div{
+    top: 0
+  }
+
+  .sorting-selects{
+    width: 30%;
   }
 }

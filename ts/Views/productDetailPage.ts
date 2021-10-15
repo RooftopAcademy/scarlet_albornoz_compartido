@@ -22,12 +22,8 @@ export default function productDetailPage(product: Product): string {
                     <p class="card-text">
                         ${product.description}
                     </p>
-                    <div class="d-flex">
-                        <span class="item-qty">
-                            <button class="btn btn-square js-remove" data-product-id="${product.id}">-</button>
-                            ${product.qty}
-                            <button class="btn btn-square js-add" data-product-id="${product.id}">+</button>
-                        </span>
+                    <div class="d-flex j-space-between">
+                        <button class="btn js-add" data-product-id="${product.id}">Add to Cart</button>
                         <a href="/products" class="btn nav-link">Back to product list</a>
                     </div>
                 </div>
